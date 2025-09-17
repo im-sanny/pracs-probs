@@ -2,9 +2,13 @@ package main
 
 import "fmt"
 
+// Basic operations
 func add(a, b int) int {
-	sum := a + b
-	return sum
+	return a + b
+}
+
+func mult(a, b int) int {
+	return a * b
 }
 
 func area(length, width int) int {
@@ -12,39 +16,50 @@ func area(length, width int) int {
 }
 
 func isEven(n int) bool {
-	if n%2 == 0 {
-		return true
-	} else {
-		return false
+	return n%2 == 0
+}
+
+// Anonymous function assigned to a variable
+var square = func(x, y int) int {
+	return x * y
+}
+
+// Higher-order function
+func operate(a, b int, op func(int, int) int) int {
+	return op(a, b)
+}
+
+// Closure example
+func makeAdder(x int) func(int) int {
+	return func(y int) int {
+		return x + y
 	}
 }
 
-var square = func(x int, y int) {
-	n := x * y
-	fmt.Println(n)
-}
-
-func operate(a, b int, op func(int, int) int) int {
-	opr := op(a, b)
-	return opr
+// Runs before main
+func init() {
+	// Immediately invoked function
+	func(x, y int) {
+		fmt.Println("Init multiply:", x*y)
+	}(6, 7)
 }
 
 func main() {
-	add(1, 1)
-	add(2, 2)
+	// Area
 	rect := area(23, 20)
-	fmt.Println(rect)
-	even := isEven(1)
-	fmt.Println(even)
-	square(2, 5)
-	dd := operate(3, 4, add)
-	fmt.Println(dd)
+	fmt.Println("Rectangle area:", rect)
 
-}
+	// Even check
+	fmt.Println("Is that a even?", isEven(1))
 
-func init() {
-	func(x int, y int) {
-		total := x * y
-		fmt.Println(total)
-	}(6, 7)
+	// Square (anonymous function)
+	fmt.Println("Square:", square(2, 5))
+
+	// Using operate with add and mult
+	fmt.Println("Operate add:", operate(3, 4, add))
+	fmt.Println("Operate mult:", operate(50, 5, mult))
+
+	// Closure example
+	addFive := makeAdder(5)
+	fmt.Println("AddFive(10):", addFive(10))
 }
