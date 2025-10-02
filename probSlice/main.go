@@ -72,11 +72,34 @@ func prob6() {
 	fmt.Println(s2)    // [99, 2, 4]
 }
 
+func prob7() {
+	a := []int{1, 2, 3}
+	b := a[:2]       // [1, 2]
+	a = append(a, 4) // [1, 2, 3, 4]
+	b = append(b, 5) // [1, 2, 5]
+	a[0] = 99        // [99, 2, 3, 4]
+	fmt.Println(a)   // [99, 2, 3, 4]
+	fmt.Println(b)   // [1, 2, 5]
+}
+
+func prob8() {
+	x := make([]int, 3, 5) //len = 3, cap = 5
+	x[0], x[1], x[2] = 1, 2, 3
+	y := x[:4]       // [1, 2, 3, 0]
+	x = append(x, 4) // Uses spare capacity, no new array
+	y[3] = 88        // Overwrites the 4 with 88
+	fmt.Println(x)   //[1, 2, 3, 88]
+	fmt.Println(y)   //[1, 2, 3, 88]
+}
+
 func main() {
-	prob1()
-	prob2()
-	prob3()
-	prob4()
-	prob5()
-	prob6()
+	// prob1()
+	// prob2()
+	// prob3()
+	// prob4()
+	// prob5()
+	// prob6()
+	// prob7()
+	// prob8()
+
 }
