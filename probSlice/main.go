@@ -92,14 +92,49 @@ func prob8() {
 	fmt.Println(y)   //[1, 2, 3, 88]
 }
 
+func prob9() {
+	p := []int{1, 2}
+	q := p
+	r := q
+	p = append(p, 3) // [1, 2, 3]
+	q = append(q, 4) // [1, 2, 4]
+	r[0] = 99        // [99, 2]
+	fmt.Println(p)   // [1, 2, 3]
+	fmt.Println(q)   // [1, 2, 4]
+	fmt.Println(r)   // [99, 2]
+}
+
+func prob10() {
+	m := []int{1, 2, 3}
+	n := m[1:3]      // [2, 3]
+	m = append(m, 4) // creates a new array for reallocation so it won't get any changes made in other array that share same array
+	n[0] = 88
+	n = append(n, 5) //[88, 3, 5]
+	fmt.Println(m)   //[1, 2, 3, 4]
+	fmt.Println(n)   //[88, 3, 5]
+}
+
+func prob11() {
+	s1 := []int{1, 2}
+	s2 := s1
+	s1 = append(s1, 3, 4) // adding 2 elements
+	s2 = append(s2, 5)
+	s1[0] = 99
+	fmt.Println(s1) //[99 2 3 4]
+	fmt.Println(s2) //[1 2 5]
+}
+
 func main() {
-	// prob1()
-	// prob2()
-	// prob3()
-	// prob4()
-	// prob5()
-	// prob6()
-	// prob7()
-	// prob8()
+	prob1()
+	prob2()
+	prob3()
+	prob4()
+	prob5()
+	prob6()
+	prob7()
+	prob8()
+	prob9()
+	prob10()
+	prob11()
 
 }
